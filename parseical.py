@@ -1,4 +1,13 @@
 # This code is BSD licensed and free for all uses
+# Right now the script is a little tedious to use. 
+# It requires a manual export from reminders, although you could easily change it to use a sqlite3 lib.
+# To do that, use a sqlite3 python lib to open ~/Library/Calendars/Calendar Cache and 
+# run something like "select ZSHAREDUID, ztitle,zstatus, znotes, ZTIMEZONE, ZCREATIONDATE, ZDATESTAMP, 
+# ZSTARTDATE, ZENDDATE, ZRECURRENCEENDDATE, ZCOMPLETEDDATE from ZICSELEMENT where zshareduid is not null;", 
+# but with a where clause to exclude already synchronized items. 
+# If you wanted to get really fancy, you could use apple's modification notification framework to re-sync
+# automatically on change.
+
 
 from icalendar import Calendar, Event
 import httplib, urllib, base64
